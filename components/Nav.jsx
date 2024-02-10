@@ -23,12 +23,13 @@ const Nav = () => {
         <>
           {session?.user ? (
             <div className="flex items-center gap-4">
-              <button
+              <Link
+                href="/add-recipe"
                 onClick={() => {}}
                 className="bg-blue-500 text-white px-4 py-2 rounded-full font-bold"
               >
                 Add Recipe
-              </button>
+              </Link>
               <button
                 onClick={() => signOut()}
                 className="bg-red-500 text-white px-4 py-2 rounded-full font-bold"
@@ -83,8 +84,11 @@ const Nav = () => {
                 >
                   Add Recipe
                 </Link>
-                <Link href="/profile" className="px-4 py-2  font-bold">
+                <Link
+                  href="/profile"
+                  className="px-4 py-2  font-bold"
                   onClick={() => setShowDropdown((prev) => !prev)}
+                >
                   Profile
                 </Link>
                 <button
