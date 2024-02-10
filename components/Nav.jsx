@@ -12,7 +12,6 @@ const Nav = () => {
     const fetchData = async () => {
       const providers = await getProviders();
       setProvidersList(providers);
-      console.log(providers);
     };
     fetchData();
   }, []);
@@ -38,7 +37,7 @@ const Nav = () => {
               </button>
               <Link href="/profile">
                 <Image
-                  src="/user.png"
+                  src={session?.user.image}
                   alt="user"
                   width={37}
                   height={37}
@@ -63,13 +62,12 @@ const Nav = () => {
         </>
       </div>
 
-      {/* Mobile Nav */}
       <div className="flex md:hidden items-center justify-between w-full">
         <Image src="/logo.png" alt="logo" width={50} height={50} />
         {session?.user ? (
           <>
             <Image
-              src="/user.png"
+              src={session?.user.image}
               alt="user"
               width={37}
               height={37}
@@ -78,14 +76,22 @@ const Nav = () => {
             />
             {showDropdown && (
               <div className="flex flex-col items-center gap-4 absolute top-16 right-4 p-4 rounded-lg border-2 border-gray-300 bg-white">
-                <button onClick={() => {}} className=" px-4 py-2  font-bold">
+                <Link
+                  href="/add-recipe"
+                  onClick={() => setShowDropdown((prev) => !prev)}
+                  className="px-4 py-2  font-bold"
+                >
                   Add Recipe
-                </button>
-                <Link href="/profile">
-                  <button className=" px-4 py-2  font-bold">Profile</button>
+                </Link>
+                <Link href="/profile" className="px-4 py-2  font-bold">
+                  onClick={() => setShowDropdown((prev) => !prev)}
+                  Profile
                 </Link>
                 <button
-                  onClick={() => signOut()}
+                  onClick={() => {
+                    signOut();
+                    setShowDropdown((prev) => !prev);
+                  }}
                   className="bg-red-500 text-white px-4 py-2 rounded-full font-bold"
                 >
                   Sign Out
