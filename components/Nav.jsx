@@ -40,23 +40,6 @@ const Nav = () => {
         )}
         </>
       </div>
-
-      <div className="md:hidden">
-        <Image src="/logo.png" alt="logo" width={50} height={50} />
-        <button onClick={() => setShowMenu(!showMenu)}>
-          <Image src="/menu.svg" alt="menu" width={20} height={20} />
-        </button>
-        {showMenu && (
-          <div className="flex flex-col items-center gap-4">
-            <Link href="/" legacyBehavior>
-              <a>Home</a>
-            </Link>
-            <Link href="/about" legacyBehavior>
-              <a>About</a>
-            </Link>
-          </div>
-        )}
-      </div>
     </nav>
   );
 };
