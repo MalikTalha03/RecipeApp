@@ -1,13 +1,11 @@
 import Image from "next/image";
-import Nav from "@/components/Nav";
 
 export default function Home() {
   return (
-    <div>
-      <Nav />
-      <div className="flex flex-col items-center justify-center h-screen gap-4">
-        <h1 className="text-5xl font-bold">Welcome to Next.js</h1>
-      </div>
-    </div>
+    <section className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-4xl font-bold">Discover & Share new Recipes</h1>
+      <p className="text-lg mt-4">Tastebite is a platform for foodies to share 
+      their favorite recipes with the world.</p>
+    </section>
   );
 }
