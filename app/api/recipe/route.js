@@ -4,8 +4,8 @@ import Recipe from "@models/recipes";
 export const GET = async (req, res) => {
   try {
     await connectToDB();
-    const recipes = await Recipe.find().populate("creator", "name");
-    return new Response(200, recipes);
+    const recipes = await Recipe.find().populate("creator");
+    return new Response(JSON.stringify(recipes), {status: 200});
   } catch (error) {
     return new Response(500, { message: "Something went wrong" });
   }
