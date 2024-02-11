@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Feed from "@components/Feed";
 
 export default function Home() {
   return (
@@ -15,6 +15,7 @@ export default function Home() {
         placeholder="Enter Recipe Name"
         className="p-2 rounded-lg w-1/2 border-2 border-gray-300 mt-4"
       />
+      <Feed />
     </section>
   );
 }
