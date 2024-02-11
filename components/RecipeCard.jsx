@@ -1,11 +1,12 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-const RecipeCard = ({ index, recipe }) => {
+const RecipeCard = ({ index, recipe, handleEdit, handleDelete }) => {
   const { data: session } = useSession();
   const router = useRouter();
-
+  const pathname = usePathname();
+  console.log(handleEdit, handleDelete);
   return (
     <div className="w-full max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
       <div className="flex items-center mb-4">
@@ -29,10 +30,28 @@ const RecipeCard = ({ index, recipe }) => {
         <p className="font-bold mb-2 text-lg">Ingredients:</p>
         <ul className="list-disc pl-6">
           {recipe.ingredients.map((ingredient, i) => (
-            <li key={i} className="mb-2">{ingredient}</li>
+            <li key={i} className="mb-2">
+              {ingredient}
+            </li>
           ))}
         </ul>
       </div>
+      {session?.user.id === recipe.creator._id && pathname === "/profile" && (
+        <div className="flex justify-end gap-4 mt-6">
+          <button
+            onClick={handleEdit}
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg font-bold"
+          >
+            Edit
+          </button>
+          <button
+            onClick={handleDelete}
+            className="px-4 py-2 bg-red-500 text-white rounded-lg font-bold"
+          >
+            Delete
+          </button>
+        </div>
+      )}
     </div>
   );
 };
