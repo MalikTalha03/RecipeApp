@@ -88,7 +88,7 @@ const Form = ({ type, recipe, setRecipe, submitting, handleSubmit }) => {
         ))}
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-full font-bold w-1/2 mx-auto mt-4"
+          className="bg-blue-500 text-white px-4 py-2 rounded-full font-bold w-1/2 mx-auto mt-4 mb-8"
         >
           {submitting ? "Submitting..." : type}
         </button>
