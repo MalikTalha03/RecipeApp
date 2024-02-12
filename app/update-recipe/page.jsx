@@ -12,15 +12,18 @@ const Create = () => {
   });
   const [submitting, setSubmitting] = useState(false);
   const searchParams = useSearchParams().get("id");
-  useEffect(() => {
-    if (searchParams) {
-      fetch("/api/recipe/" + searchParams)
-        .then((res) => res.json())
-        .then((data) => {
-            setRecipe(data);
-        })
-        .catch((error) => alert(error));
+  const fetchData = async () => {
+    try {
+      const response = await fetch("/api/recipe/" + searchParams);
+      const data = await response.json();
+      setRecipe(data);
     }
+    catch (error) {
+      alert(error);
+    }
+  }
+  useEffect(() => {
+      fetchData();
   }, [searchParams]);
   const handleUpdate = (e) => {
     e.preventDefault();
