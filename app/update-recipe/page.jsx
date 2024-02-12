@@ -3,6 +3,14 @@ import Form from "@components/Form";
 import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+const Update = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Create />
+    </Suspense>
+  );
+};
+
 const Create = () => {
   const router = useRouter();
   const [recipe, setRecipe] = useState({
@@ -17,13 +25,12 @@ const Create = () => {
       const response = await fetch("/api/recipe/" + searchParams);
       const data = await response.json();
       setRecipe(data);
-    }
-    catch (error) {
+    } catch (error) {
       alert(error);
     }
-  }
+  };
   useEffect(() => {
-      fetchData();
+    fetchData();
   }, [searchParams]);
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -50,10 +57,9 @@ const Create = () => {
           submitting={submitting}
           handleSubmit={handleUpdate}
         />
-      )
-      }
+      )}
     </div>
   );
 };
 
-export default Create;
+export default Update;
