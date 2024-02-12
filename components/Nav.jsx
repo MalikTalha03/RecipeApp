@@ -3,11 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Nav = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const { data: session } = useSession();
   const [providersList, setProvidersList] = useState(null);
+  const router = useRouter();
   useEffect(() => {
     const fetchData = async () => {
       const providers = await getProviders();
@@ -19,7 +21,14 @@ const Nav = () => {
   return (
     <nav className="flex items-center justify-between p-4 bg-gray-400 text-black w-full">
       <div className="hidden md:flex items-center gap-4 justify-between w-full">
-        <Image src="/logo.png" alt="logo" width={90} height={90} />
+        <Image
+          src="/logo.png"
+          alt="logo"
+          onClick={() => router.push("/")}
+          style={{ cursor: "pointer" }}
+          width={90}
+          height={90}
+        />
         <>
           {session?.user ? (
             <div className="flex items-center gap-4">
