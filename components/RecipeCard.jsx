@@ -1,6 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const RecipeCard = ({ index, recipe, handleEdit, handleDelete }) => {
   const { data: session } = useSession();
@@ -10,7 +11,9 @@ const RecipeCard = ({ index, recipe, handleEdit, handleDelete }) => {
     <div className="max-w-2/4 mx-auto p-6 bg-white rounded-lg shadow-md">
       <div className="flex items-center mb-4">
         {recipe?.creator.image && (
-          <img
+          <Image
+          width={37}
+          height={37}
             src={recipe.creator.image}
             alt="User Avatar"
             className="w-12 h-12 rounded-full mr-4"
