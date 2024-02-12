@@ -1,25 +1,23 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const RecipeCard = ({ index, recipe, handleEdit, handleDelete }) => {
   const { data: session } = useSession();
-  const router = useRouter();
   const pathname = usePathname();
-  console.log(handleEdit, handleDelete);
   return (
-    <div className="w-full max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-2/4 mx-auto p-6 bg-white rounded-lg shadow-md">
       <div className="flex items-center mb-4">
-        {session?.user?.image && (
+        {recipe.creator.image && (
           <img
-            src={session.user.image}
+            src={recipe.creator.image}
             alt="User Avatar"
             className="w-12 h-12 rounded-full mr-4"
           />
         )}
         <div>
-          {session?.user?.name && (
-            <p className="text-lg font-bold">{session.user.name}</p>
+          {recipe.creator.username && (
+            <p className="text-lg font-bold">{recipe.creator.username}</p>
           )}
           <p className="text-gray-500 text-sm">Recipe Author</p>
         </div>
