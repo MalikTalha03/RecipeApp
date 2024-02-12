@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
-const RecipeCard = ({ index, recipe, handleEdit, handleDelete }) => {
+const RecipeCard = ({ recipe, handleEdit, handleDelete }) => {
   const { data: session } = useSession();
   const pathname = usePathname();
   console.log(recipe.creator.image)

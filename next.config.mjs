@@ -11,6 +11,9 @@ const nextConfig = {
         ...config.experiments,
         topLevelAwait: true,
       }
+      Object.assign(config.resolve.alias, {
+        aws4: false,
+      });
       return config
     }
   }
