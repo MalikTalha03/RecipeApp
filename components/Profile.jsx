@@ -4,7 +4,7 @@ const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
   return (
     <section className='w-full'>
       <h1 className='text-4xl font-bold text-center mt-6'>
-        <span className='text-primary'>{name}</span>'s Recipes
+        <span className='text-primary'>{name}</span>{`'s Recipes`}
       </h1>
       <p className='text-center text-lg mt-4'>{desc}</p>
 
