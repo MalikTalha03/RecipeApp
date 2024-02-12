@@ -3,9 +3,8 @@ import { useState } from "react";
 
 const Form = ({ type, recipe, setRecipe, submitting, handleSubmit }) => {
   const [ingredientList, setIngredientList] = useState(
-    recipe.ingredients || [""]
+    recipe[0].ingredients || [""]
   );
-
   const handleIngredientChange = (index, value) => {
     const updatedIngredients = [...ingredientList];
     updatedIngredients[index] = value;
@@ -15,10 +14,8 @@ const Form = ({ type, recipe, setRecipe, submitting, handleSubmit }) => {
 
   const handleAddRemoveIngredient = (index) => {
     if (index === ingredientList.length - 1) {
-      // If the clicked button is associated with the last input
       setIngredientList([...ingredientList, ""]);
     } else {
-      // If the clicked button is associated with an existing input
       const updatedIngredients = [...ingredientList];
       updatedIngredients.splice(index, 1);
       setIngredientList(updatedIngredients);
@@ -44,7 +41,7 @@ const Form = ({ type, recipe, setRecipe, submitting, handleSubmit }) => {
         <input
           type="text"
           id="title"
-          value={recipe.title}
+          value={recipe[0].title}
           onChange={(e) => setRecipe({ ...recipe, title: e.target.value })}
           className="p-2 rounded-lg w-full border-2 border-gray-300"
           placeholder="Enter Recipe Name"
@@ -54,7 +51,7 @@ const Form = ({ type, recipe, setRecipe, submitting, handleSubmit }) => {
         </label>
         <textarea
           id="description"
-          value={recipe.description}
+          value={recipe[0].description}
           onChange={(e) =>
             setRecipe({ ...recipe, description: e.target.value })
           }
