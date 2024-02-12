@@ -45,7 +45,7 @@ const Create = () => {
       {recipe && recipe.title !== "" && (
         <Form
           type="Update"
-          recipe={recipe}
+          recipe={recipe[0]}
           setRecipe={setRecipe}
           submitting={submitting}
           handleSubmit={handleUpdate}
